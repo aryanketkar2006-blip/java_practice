@@ -1,25 +1,35 @@
-class Computer1{
+// Write a Java program that calculates the maximum number of pens (10) and pencils (5) a customer can purchase with a given amount of money and returns any remaining changes.
+class Computer1 {
     public void Music() {
         System.out.println("Music is playing");
     }
+
     public String Getmeapen(int cost) {
         int pens = cost / 10;
         int remainingAmount = cost % 10;
-        int pensil = remainingAmount/5;
+
+        int pencils = remainingAmount / 5;
         int change = remainingAmount % 5;
-        if (pens > 0 && remainingAmount > 0) {
-//            return pens + " pens and " + remainingAmount + " returned";
-            return pens + " pens " + pensil + " pencil and " + change + " returned";
 
-        } else if (pens > 0) {
-            return pens + " pens returned";
+        String result = "";
 
-        } else if (pensil > 0) {
-            return pensil + " pensil " + change + " rupess returned";
-
-        } else {
-            return "Insufficiant money";
+        if (pens > 0) {
+            result = result + pens + " pens ";
         }
+
+        if (pencils > 0) {
+            result = result + pencils + " pencils";
+        }
+
+        if (change > 0) {
+            result = result + " and ₹" + change + " returned";
+        }
+
+        if (pens == 0 && pencils == 0) {
+            return "Insufficient money";
+        }
+
+        return result;
     }
 }
 
@@ -28,7 +38,7 @@ public class javalooppractice {
     public static void main(String[] args) {
         Computer1 com = new Computer1();
         com.Music();
-        String str = com.Getmeapen(12);
+        String str = com.Getmeapen(17);
         System.out.println(str);
     }
 }
